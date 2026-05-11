@@ -125,13 +125,7 @@ const AdminNewsEditor = () => {
           </div>
           <div className="space-y-2">
             <Label htmlFor="date">Date</Label>
-            <Input
-              id="date"
-              value={form.date}
-              onChange={(e) => update("date", e.target.value)}
-              placeholder="Hong Kong, May 2025"
-              required
-            />
+            <DatePickerField value={form.date} onChange={(v) => update("date", v)} />
           </div>
         </div>
 
