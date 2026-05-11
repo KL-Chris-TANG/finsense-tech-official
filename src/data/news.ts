@@ -1,4 +1,5 @@
 import type { Language } from "@/lib/language";
+import { loadNews, resolveTranslation } from "@/lib/admin-news-store";
 
 export type NewsCategory = "Awards" | "Company" | "Product" | "Partnership" | "Sustainability" | "Investors";
 
@@ -340,11 +341,8 @@ export const getStaticNews = (language: Language): NewsArticle[] =>
 // during seeding we fall back to the bundled static data.
 export const getNews = (language: Language): NewsArticle[] => {
   if (typeof window === "undefined") return getStaticNews(language);
-  // Lazy import to avoid a circular dependency at module-eval time.
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const store = require("@/lib/admin-news-store") as typeof import("@/lib/admin-news-store");
-  return store.loadNews().map((a) => {
-    const t = store.resolveTranslation(a, language);
+  return loadNews().map((a) => {
+    const t = resolveTranslation(a, language);
     return {
       slug: a.slug,
       title: t.title,
