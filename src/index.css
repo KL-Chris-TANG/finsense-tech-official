@@ -109,6 +109,11 @@
     transition: background-color 300ms ease, color 300ms ease;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
   /* Simplified Chinese -> PingFang SC */
   :lang(zh-Hans),
   :lang(zh-Hans) h1,
@@ -116,8 +121,12 @@
   :lang(zh-Hans) h3,
   :lang(zh-Hans) h4,
   :lang(zh-Hans) h5,
-  :lang(zh-Hans) h6 {
-    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', 'Noto Sans SC', sans-serif;
+  :lang(zh-Hans) h6,
+  :lang(zh-Hans) button,
+  :lang(zh-Hans) input,
+  :lang(zh-Hans) textarea,
+  :lang(zh-Hans) select {
+    font-family: 'PingFang SC', 'Inter', 'Microsoft YaHei', 'Heiti SC', 'Noto Sans SC', sans-serif;
   }
 
   /* Traditional Chinese -> PingFang HK */
@@ -127,13 +136,12 @@
   :lang(zh-Hant) h3,
   :lang(zh-Hant) h4,
   :lang(zh-Hant) h5,
-  :lang(zh-Hant) h6 {
-    font-family: 'Inter', 'PingFang HK', 'PingFang TC', 'Microsoft JhengHei', 'Heiti TC', 'Noto Sans HK', 'Noto Sans TC', sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+  :lang(zh-Hant) h6,
+  :lang(zh-Hant) button,
+  :lang(zh-Hant) input,
+  :lang(zh-Hant) textarea,
+  :lang(zh-Hant) select {
+    font-family: 'PingFang HK', 'PingFang TC', 'Inter', 'Microsoft JhengHei', 'Heiti TC', 'Noto Sans HK', 'Noto Sans TC', sans-serif;
   }
 }
 
