@@ -88,12 +88,18 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-8">
             <div
               className="relative"
-              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseEnter={() => {
+                setSolutionsOpen(true);
+                setLanguageOpen(false);
+              }}
               onMouseLeave={() => setSolutionsOpen(false)}
             >
               <button
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide uppercase"
-                onClick={() => setSolutionsOpen((open) => !open)}
+                onClick={() => {
+                  setSolutionsOpen((open) => !open);
+                  setLanguageOpen(false);
+                }}
                 aria-expanded={solutionsOpen}
               >
                 {copy.solutions}
