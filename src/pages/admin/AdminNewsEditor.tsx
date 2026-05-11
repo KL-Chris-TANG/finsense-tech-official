@@ -75,6 +75,10 @@ const AdminNewsEditor = () => {
       ...form,
       slug: slugify(form.slug),
       heroQuote: form.heroQuote?.trim() ? form.heroQuote : undefined,
+      heroImage: form.heroImage?.trim() ? form.heroImage : undefined,
+      linkedInUrl: form.linkedInUrl?.trim() ? form.linkedInUrl : undefined,
+      youtubeUrl: form.youtubeUrl?.trim() ? form.youtubeUrl : undefined,
+      externalUrl: form.externalUrl?.trim() ? form.externalUrl : undefined,
       body: bodyText
         .split(/\n\s*\n/)
         .map((p) => p.trim())
