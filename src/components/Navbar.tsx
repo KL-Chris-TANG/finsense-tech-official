@@ -231,7 +231,11 @@ const Navbar = () => {
             <div className="relative">
               <button
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-transparent text-muted-foreground transition-colors duration-300 hover:border-border/60 hover:text-foreground"
-                onClick={() => setLanguageOpen((open) => !open)}
+                onClick={() => {
+                  setLanguageOpen((open) => !open);
+                  setMobileOpen(false);
+                  setMobileSolutionsOpen(false);
+                }}
                 aria-expanded={languageOpen}
                 aria-label={copy.language}
                 title={copy.language}
@@ -270,7 +274,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <button className="text-foreground" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+            <button className="text-foreground" onClick={() => { setMobileOpen(!mobileOpen); setLanguageOpen(false); }} aria-label="Toggle menu">
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
