@@ -180,6 +180,53 @@ const AdminNewsEditor = () => {
         </div>
 
         <div className="space-y-2">
+          <Label htmlFor="heroImage">Hero image URL (optional)</Label>
+          <p className="text-xs text-muted-foreground">
+            Shown at the top of the post. Paste an absolute URL (https://...) or a path under /src/assets.
+          </p>
+          <Input
+            id="heroImage"
+            value={form.heroImage ?? ""}
+            onChange={(e) => update("heroImage", e.target.value)}
+            placeholder="https://example.com/cover.jpg"
+          />
+        </div>
+
+        <div className="space-y-4 rounded-lg border border-border p-4">
+          <div>
+            <h3 className="text-sm font-semibold">Social & external links (optional)</h3>
+            <p className="text-xs text-muted-foreground">Shown as buttons under the article.</p>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="linkedInUrl">LinkedIn post URL</Label>
+            <Input
+              id="linkedInUrl"
+              value={form.linkedInUrl ?? ""}
+              onChange={(e) => update("linkedInUrl", e.target.value)}
+              placeholder="https://www.linkedin.com/posts/..."
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="youtubeUrl">YouTube URL</Label>
+            <Input
+              id="youtubeUrl"
+              value={form.youtubeUrl ?? ""}
+              onChange={(e) => update("youtubeUrl", e.target.value)}
+              placeholder="https://www.youtube.com/watch?v=..."
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="externalUrl">External link</Label>
+            <Input
+              id="externalUrl"
+              value={form.externalUrl ?? ""}
+              onChange={(e) => update("externalUrl", e.target.value)}
+              placeholder="https://..."
+            />
+          </div>
+        </div>
+
+        <div className="space-y-2">
           <Label htmlFor="body">Body</Label>
           <p className="text-xs text-muted-foreground">Separate paragraphs with a blank line.</p>
           <Textarea
