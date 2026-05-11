@@ -12,6 +12,10 @@ export interface NewsArticle {
   author: string;
   readTime: string;
   heroQuote?: string;
+  heroImage?: string;
+  linkedInUrl?: string;
+  youtubeUrl?: string;
+  externalUrl?: string;
   body: string[];
 }
 
