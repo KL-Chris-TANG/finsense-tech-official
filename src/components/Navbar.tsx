@@ -112,7 +112,7 @@ const Navbar = () => {
               {solutionsOpen && (
                 <div className="absolute top-full left-1/2 w-[640px] -translate-x-1/2 pt-4">
                   <div
-                    className="grid grid-cols-2 gap-1 rounded-2xl border border-border/40 bg-background/95 p-4 shadow-2xl shadow-primary/10 backdrop-blur-2xl"
+                    className="grid grid-cols-2 gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-4 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
                     style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
                   >
                     {solutions.map((solution) => {
@@ -181,7 +181,7 @@ const Navbar = () => {
               {languageOpen && (
                 <div className="absolute top-full right-0 pt-4">
                   <div
-                    className="flex min-w-[140px] flex-col gap-1 rounded-2xl border border-border/40 bg-background/95 p-2 shadow-2xl shadow-primary/10 backdrop-blur-2xl"
+                    className="flex min-w-[140px] flex-col gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
                     style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
                   >
                     {languageOptions.map((option) => (
@@ -234,7 +234,7 @@ const Navbar = () => {
               {languageOpen && (
                 <div className="absolute top-full right-0 pt-4 z-50">
                   <div
-                    className="flex min-w-[140px] flex-col gap-1 rounded-2xl border border-border/40 bg-background/95 p-2 shadow-2xl shadow-primary/10 backdrop-blur-2xl"
+                    className="flex min-w-[140px] flex-col gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
                     style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
                   >
                     {languageOptions.map((option) => (
