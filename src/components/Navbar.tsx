@@ -41,14 +41,14 @@ const Navbar = () => {
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 transition-all duration-500">
       <nav
         className={`relative w-full max-w-5xl rounded-2xl border px-4 py-3 sm:px-6 transition-all duration-500 ${
-          scrolled || mobileOpen || solutionsOpen || languageOpen
+          scrolled || mobileOpen
             ? "border-white/20 bg-background/40 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
             : theme === "dark"
               ? "border-transparent bg-transparent shadow-none"
               : "border-border/40 bg-background shadow-none"
         }`}
         style={
-          scrolled || mobileOpen || solutionsOpen || languageOpen
+          scrolled || mobileOpen
             ? {
                 backdropFilter: "blur(28px) saturate(180%)",
                 WebkitBackdropFilter: "blur(28px) saturate(180%)",
@@ -56,7 +56,7 @@ const Navbar = () => {
             : undefined
         }
       >
-        {(scrolled || mobileOpen || solutionsOpen || languageOpen) && (
+        {(scrolled || mobileOpen) && (
           <>
             <div
               aria-hidden
