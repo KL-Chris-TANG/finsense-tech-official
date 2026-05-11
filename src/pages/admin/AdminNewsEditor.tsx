@@ -31,6 +31,10 @@ const empty: AdminNewsArticle = {
   author: "Finsense Technology",
   readTime: "3 min read",
   heroQuote: "",
+  heroImage: "",
+  linkedInUrl: "",
+  youtubeUrl: "",
+  externalUrl: "",
   body: [],
 };
 
