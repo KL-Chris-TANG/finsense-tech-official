@@ -113,7 +113,7 @@ const Navbar = () => {
                 <div className="absolute top-full left-1/2 w-[640px] -translate-x-1/2 pt-4">
                   <div
                     className="grid grid-cols-2 gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-4 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
-                    style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
+                    style={{ backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}
                   >
                     {solutions.map((solution) => {
                       const Icon = solution.icon;
@@ -182,7 +182,7 @@ const Navbar = () => {
                 <div className="absolute top-full right-0 pt-4">
                   <div
                     className="flex min-w-[140px] flex-col gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
-                    style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
+                    style={{ backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}
                   >
                     {languageOptions.map((option) => (
                       <button
@@ -235,7 +235,7 @@ const Navbar = () => {
                 <div className="absolute top-full right-0 pt-4 z-50">
                   <div
                     className="flex min-w-[140px] flex-col gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
-                    style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
+                    style={{ backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}
                   >
                     {languageOptions.map((option) => (
                       <button
