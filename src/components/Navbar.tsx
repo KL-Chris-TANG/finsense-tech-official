@@ -40,19 +40,35 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 transition-all duration-500">
       <nav
-        className={`w-full max-w-5xl rounded-2xl border px-4 py-3 sm:px-6 transition-all duration-500 ${
+        className={`relative w-full max-w-5xl overflow-hidden rounded-2xl border px-4 py-3 sm:px-6 transition-all duration-500 ${
           scrolled || mobileOpen
-            ? "border-border/40 bg-background/95 backdrop-blur-2xl shadow-lg shadow-primary/5"
+            ? "border-white/20 bg-background/40 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
             : theme === "dark"
-              ? "border-transparent bg-transparent shadow-none backdrop-blur-none"
-              : "border-border/40 bg-background shadow-none backdrop-blur-none"
+              ? "border-transparent bg-transparent shadow-none"
+              : "border-border/40 bg-background shadow-none"
         }`}
         style={
           scrolled || mobileOpen
-            ? { backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }
+            ? {
+                backdropFilter: "blur(28px) saturate(180%)",
+                WebkitBackdropFilter: "blur(28px) saturate(180%)",
+              }
             : undefined
         }
       >
+        {(scrolled || mobileOpen) && (
+          <>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/20 via-white/5 to-transparent dark:from-white/10 dark:via-white/[0.02]"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/20"
+            />
+          </>
+        )}
+        <div className="relative">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 sm:gap-3">
             <Link to="/" className="flex items-center" aria-label={copy.homeLabel}>
@@ -295,6 +311,7 @@ const Navbar = () => {
             </div>
           </div>
         )}
+        </div>
       </nav>
     </div>
   );
