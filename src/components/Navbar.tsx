@@ -274,7 +274,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <button className="text-foreground" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+            <button className="text-foreground" onClick={() => { setMobileOpen(!mobileOpen); setLanguageOpen(false); }} aria-label="Toggle menu">
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
