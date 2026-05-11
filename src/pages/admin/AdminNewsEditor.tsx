@@ -249,4 +249,46 @@ const AdminNewsEditor = () => {
   );
 };
 
+const DATE_FORMAT = "d MMMM yyyy";
+
+const parseStoredDate = (value: string): Date | undefined => {
+  if (!value) return undefined;
+  // Strip optional location prefix like "Hong Kong, 22 April 2025"
+  const cleaned = value.includes(",") ? value.split(",").slice(-1)[0].trim() : value.trim();
+  const candidates = [DATE_FORMAT, "MMMM yyyy", "d MMM yyyy", "yyyy-MM-dd"];
+  for (const fmt of candidates) {
+    const d = parse(cleaned, fmt, new Date());
+    if (isValid(d)) return d;
+  }
+  const native = new Date(cleaned);
+  return isValid(native) ? native : undefined;
+};
+
+const DatePickerField = ({ value, onChange }: { value: string; onChange: (v: string) => void }) => {
+  const date = parseStoredDate(value);
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
+        >
+          <CalendarIcon size={14} className="mr-2" />
+          {date ? format(date, DATE_FORMAT) : <span>Pick a date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0" align="start">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={(d) => d && onChange(format(d, DATE_FORMAT))}
+          initialFocus
+          className={cn("p-3 pointer-events-auto")}
+        />
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 export default AdminNewsEditor;
