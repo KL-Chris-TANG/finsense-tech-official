@@ -322,7 +322,7 @@ const siteCopy = {
     },
     homeAbout: {
       eyebrow: "關於 Finsense Technology",
-      title: "以 AI 驅動金融科技，結合專屬願景、使命與合作夥伴生態系统。",
+      title: "以 AI 驅動金融科技，結合專屬願景、使命與合作夥伴生態系統。",
       description: "Finsense 專為香港及大灣區打造智能平台，涵蓋金融、保險、可持續發展及智慧城市領域。",
       imageAlt: "Finsense 於香港商務場景中的 AI 金融營運應用",
     },
