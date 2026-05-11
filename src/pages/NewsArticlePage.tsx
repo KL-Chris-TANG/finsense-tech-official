@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, ExternalLink, Linkedin, User, Youtube } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
