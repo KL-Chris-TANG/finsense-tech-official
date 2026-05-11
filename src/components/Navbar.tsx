@@ -185,9 +185,12 @@ const Navbar = () => {
               {languageOpen && (
                 <div className="absolute top-full right-0 pt-4">
                   <div
-                    className="flex min-w-[140px] flex-col gap-1 relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 p-2 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
+                    className="relative overflow-hidden min-w-[140px] rounded-2xl border border-white/20 bg-background/40 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
                     style={{ backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}
                   >
+                    <div aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/20 via-white/5 to-transparent dark:from-white/10 dark:via-white/[0.02]" />
+                    <div aria-hidden className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/20" />
+                    <div className="relative flex flex-col gap-1 p-2">
                     {languageOptions.map((option) => (
                       <button
                         key={option.value}
@@ -204,6 +207,7 @@ const Navbar = () => {
                         />
                       </button>
                     ))}
+                    </div>
                   </div>
                 </div>
               )}
