@@ -66,33 +66,12 @@ const InquiryPage = () => {
       return;
     }
 
-    try {
-      const response = await fetch("/api/public/send_inquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: parsed.data.name,
-          company: parsed.data.company,
-          email: parsed.data.email,
-          inquiryType: parsed.data.inquiryType,
-          howCanWeHelp: parsed.data.message,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.code !== 200) {
-        toast.error(result.msg || copy.invalidToast);
-        return;
-      }
-
-      navigate("/inquiry/sent", {
-        state: { name: parsed.data.name },
-        replace: true,
-      });
-    } catch {
-      toast.error(copy.invalidToast);
-    }
+    // No backend connected yet — proceed straight to confirmation.
+    // When Lovable Cloud / an email service is wired up, send `parsed.data` here.
+    navigate("/inquiry/sent", {
+      state: { name: parsed.data.name },
+      replace: true,
+    });
   };
 
   return (
