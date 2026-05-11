@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { deleteArticle, loadNews, type AdminNewsArticle } from "@/lib/admin-news-store";
+import { deleteArticle, loadNews, resolveTranslation, type AdminNewsArticle } from "@/lib/admin-news-store";
 import { useToast } from "@/hooks/use-toast";
 
 const AdminNewsList = () => {
@@ -66,10 +66,12 @@ const AdminNewsList = () => {
                 </td>
               </tr>
             ) : (
-              items.map((article) => (
+              items.map((article) => {
+                const enTitle = resolveTranslation(article, "en").title;
+                return (
                 <tr key={article.slug} className="border-t border-border">
                   <td className="px-4 py-3">
-                    <div className="font-medium">{article.title}</div>
+                    <div className="font-medium">{enTitle}</div>
                     <div className="text-xs text-muted-foreground truncate max-w-md">{article.slug}</div>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
@@ -93,7 +95,7 @@ const AdminNewsList = () => {
                           <AlertDialogHeader>
                             <AlertDialogTitle>Delete this post?</AlertDialogTitle>
                             <AlertDialogDescription>
-                              "{article.title}" will be removed. This cannot be undone.
+                              "{enTitle}" will be removed. This cannot be undone.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
@@ -107,7 +109,8 @@ const AdminNewsList = () => {
                     </div>
                   </td>
                 </tr>
-              ))
+                );
+              })
             )}
           </tbody>
         </table>

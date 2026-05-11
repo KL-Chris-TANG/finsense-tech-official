@@ -9,6 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -17,29 +18,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
+  ADMIN_LANGUAGES,
   categoryOptions,
+  emptyArticle,
   getArticleBySlug,
   slugify,
   upsertArticle,
   type AdminNewsArticle,
+  type ArticleTranslation,
 } from "@/lib/admin-news-store";
 import type { NewsCategory } from "@/data/news";
+import type { Language } from "@/lib/language";
 import { useToast } from "@/hooks/use-toast";
 
-const empty: AdminNewsArticle = {
-  slug: "",
-  title: "",
-  date: "",
-  category: "Company",
-  excerpt: "",
-  author: "Finsense Technology",
-  readTime: "3 min read",
-  heroQuote: "",
-  heroImage: "",
-  linkedInUrl: "",
-  youtubeUrl: "",
-  externalUrl: "",
-  body: [],
+const LANGUAGE_LABELS: Record<Language, string> = {
+  en: "English",
+  "zh-Hant": "繁體中文",
+  "zh-Hans": "简体中文",
 };
 
 const AdminNewsEditor = () => {
@@ -50,9 +45,16 @@ const AdminNewsEditor = () => {
 
   const existing = useMemo(() => (isNew ? null : getArticleBySlug(slug!) ?? null), [slug, isNew]);
 
-  const [form, setForm] = useState<AdminNewsArticle>(existing ?? empty);
-  const [bodyText, setBodyText] = useState((existing?.body ?? []).join("\n\n"));
+  const [form, setForm] = useState<AdminNewsArticle>(existing ?? emptyArticle());
+  const [bodyText, setBodyText] = useState<Record<Language, string>>(() => {
+    const init: Record<Language, string> = { en: "", "zh-Hant": "", "zh-Hans": "" };
+    ADMIN_LANGUAGES.forEach((l) => {
+      init[l] = (existing?.translations?.[l]?.body ?? []).join("\n\n");
+    });
+    return init;
+  });
   const [slugTouched, setSlugTouched] = useState(!isNew);
+  const [activeLang, setActiveLang] = useState<Language>("en");
 
   useEffect(() => {
     if (!isNew && !existing) {
@@ -64,32 +66,60 @@ const AdminNewsEditor = () => {
   const update = <K extends keyof AdminNewsArticle>(key: K, value: AdminNewsArticle[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
 
-  const onTitleChange = (val: string) => {
-    update("title", val);
-    if (!slugTouched) update("slug", slugify(val));
+  const updateTranslation = (
+    lang: Language,
+    key: keyof ArticleTranslation,
+    value: string,
+  ) =>
+    setForm((f) => ({
+      ...f,
+      translations: {
+        ...f.translations,
+        [lang]: { ...f.translations[lang], [key]: value },
+      },
+    }));
+
+  const onTitleChange = (lang: Language, val: string) => {
+    updateTranslation(lang, "title", val);
+    if (lang === "en" && !slugTouched) update("slug", slugify(val));
   };
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!form.title.trim() || !form.slug.trim() || !form.date.trim()) {
-      toast({ title: "Missing fields", description: "Title, slug, and date are required.", variant: "destructive" });
+    const enTitle = form.translations.en.title.trim();
+    if (!enTitle || !form.slug.trim() || !form.date.trim()) {
+      toast({
+        title: "Missing fields",
+        description: "English title, slug, and date are required.",
+        variant: "destructive",
+      });
       return;
     }
+    const translations = ADMIN_LANGUAGES.reduce((acc, lang) => {
+      const t = form.translations[lang];
+      acc[lang] = {
+        title: t.title.trim(),
+        excerpt: t.excerpt.trim(),
+        heroQuote: t.heroQuote?.trim() ? t.heroQuote.trim() : undefined,
+        body: bodyText[lang]
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter(Boolean),
+      };
+      return acc;
+    }, {} as AdminNewsArticle["translations"]);
+
     const article: AdminNewsArticle = {
       ...form,
       slug: slugify(form.slug),
-      heroQuote: form.heroQuote?.trim() ? form.heroQuote : undefined,
       heroImage: form.heroImage?.trim() ? form.heroImage : undefined,
       linkedInUrl: form.linkedInUrl?.trim() ? form.linkedInUrl : undefined,
       youtubeUrl: form.youtubeUrl?.trim() ? form.youtubeUrl : undefined,
       externalUrl: form.externalUrl?.trim() ? form.externalUrl : undefined,
-      body: bodyText
-        .split(/\n\s*\n/)
-        .map((p) => p.trim())
-        .filter(Boolean),
+      translations,
     };
     upsertArticle(article);
-    toast({ title: isNew ? "Post created" : "Post updated", description: article.title });
+    toast({ title: isNew ? "Post created" : "Post updated", description: enTitle });
     navigate("/admin/news");
   };
 
@@ -105,11 +135,6 @@ const AdminNewsEditor = () => {
       <h1 className="text-3xl font-bold mb-8">{isNew ? "New post" : "Edit post"}</h1>
 
       <form onSubmit={onSubmit} className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
-          <Input id="title" value={form.title} onChange={(e) => onTitleChange(e.target.value)} required />
-        </div>
-
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="slug">Slug</Label>
@@ -154,27 +179,6 @@ const AdminNewsEditor = () => {
         <div className="space-y-2">
           <Label htmlFor="author">Author</Label>
           <Input id="author" value={form.author} onChange={(e) => update("author", e.target.value)} />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="excerpt">Excerpt</Label>
-          <Textarea
-            id="excerpt"
-            rows={3}
-            value={form.excerpt}
-            onChange={(e) => update("excerpt", e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="heroQuote">Hero quote (optional)</Label>
-          <Textarea
-            id="heroQuote"
-            rows={2}
-            value={form.heroQuote ?? ""}
-            onChange={(e) => update("heroQuote", e.target.value)}
-          />
         </div>
 
         <div className="space-y-2">
@@ -224,16 +228,59 @@ const AdminNewsEditor = () => {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="body">Body</Label>
-          <p className="text-xs text-muted-foreground">Separate paragraphs with a blank line.</p>
-          <Textarea
-            id="body"
-            rows={12}
-            value={bodyText}
-            onChange={(e) => setBodyText(e.target.value)}
-            required
-          />
+        <div className="space-y-3 rounded-lg border border-border p-4">
+          <div>
+            <h3 className="text-sm font-semibold">Content (per language)</h3>
+            <p className="text-xs text-muted-foreground">
+              English is required. If a language is left blank, the front-end falls back to English.
+            </p>
+          </div>
+          <Tabs value={activeLang} onValueChange={(v) => setActiveLang(v as Language)}>
+            <TabsList>
+              {ADMIN_LANGUAGES.map((l) => (
+                <TabsTrigger key={l} value={l}>
+                  {LANGUAGE_LABELS[l]}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            {ADMIN_LANGUAGES.map((l) => (
+              <TabsContent key={l} value={l} className="space-y-4 pt-4">
+                <div className="space-y-2">
+                  <Label>Title{l === "en" ? "" : " (optional)"}</Label>
+                  <Input
+                    value={form.translations[l].title}
+                    onChange={(e) => onTitleChange(l, e.target.value)}
+                    required={l === "en"}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Excerpt</Label>
+                  <Textarea
+                    rows={3}
+                    value={form.translations[l].excerpt}
+                    onChange={(e) => updateTranslation(l, "excerpt", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Hero quote (optional)</Label>
+                  <Textarea
+                    rows={2}
+                    value={form.translations[l].heroQuote ?? ""}
+                    onChange={(e) => updateTranslation(l, "heroQuote", e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Body</Label>
+                  <p className="text-xs text-muted-foreground">Separate paragraphs with a blank line.</p>
+                  <Textarea
+                    rows={12}
+                    value={bodyText[l]}
+                    onChange={(e) => setBodyText((b) => ({ ...b, [l]: e.target.value }))}
+                  />
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
 
         <div className="flex justify-end gap-2 pt-4 border-t border-border">
@@ -253,7 +300,6 @@ const DATE_FORMAT = "d MMMM yyyy";
 
 const parseStoredDate = (value: string): Date | undefined => {
   if (!value) return undefined;
-  // Strip optional location prefix like "Hong Kong, 22 April 2025"
   const cleaned = value.includes(",") ? value.split(",").slice(-1)[0].trim() : value.trim();
   const candidates = [DATE_FORMAT, "MMMM yyyy", "d MMM yyyy", "yyyy-MM-dd"];
   for (const fmt of candidates) {

@@ -1,4 +1,5 @@
 import type { Language } from "@/lib/language";
+import { loadNews, resolveTranslation } from "@/lib/admin-news-store";
 
 export type NewsCategory = "Awards" | "Company" | "Product" | "Partnership" | "Sustainability" | "Investors";
 
@@ -327,11 +328,39 @@ export const newsCategories: NewsCategory[] = [
 
 export const getCategoryLabel = (language: Language, category: NewsCategory) => categoryLabels[language][category];
 
-export const getNews = (language: Language): NewsArticle[] =>
+// Static seed data used as the initial bundled content. The admin store reads
+// from these when the local store is empty.
+export const getStaticNews = (language: Language): NewsArticle[] =>
   articleContent[language].map((article) => ({
     ...article,
     categoryLabel: getCategoryLabel(language, article.category),
   }));
+
+// Public-facing reads. In the browser these go through the admin store so
+// edits made in /admin show up on the front-end immediately. On the server /
+// during seeding we fall back to the bundled static data.
+export const getNews = (language: Language): NewsArticle[] => {
+  if (typeof window === "undefined") return getStaticNews(language);
+  return loadNews().map((a) => {
+    const t = resolveTranslation(a, language);
+    return {
+      slug: a.slug,
+      title: t.title,
+      date: a.date,
+      category: a.category,
+      categoryLabel: getCategoryLabel(language, a.category),
+      excerpt: t.excerpt,
+      author: a.author,
+      readTime: a.readTime,
+      heroQuote: t.heroQuote,
+      heroImage: a.heroImage,
+      linkedInUrl: a.linkedInUrl,
+      youtubeUrl: a.youtubeUrl,
+      externalUrl: a.externalUrl,
+      body: t.body,
+    };
+  });
+};
 
 export const getAwards = (language: Language): AwardRecognition[] => [...localizedAwards[language]];
 
