@@ -110,7 +110,7 @@ const Navbar = () => {
               </button>
 
               {solutionsOpen && (
-                <div className="absolute top-full left-1/2 w-[640px] -translate-x-1/2 pt-4">
+                <div className="absolute top-full left-1/2 w-[640px] -translate-x-1/2 pt-8">
                   <div
                     className="relative overflow-hidden rounded-2xl border border-white/20 bg-background/40 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
                     style={{ backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}
