@@ -42,7 +42,7 @@ const Navbar = () => {
       <nav
         className={`relative w-full max-w-5xl rounded-2xl border px-4 py-3 sm:px-6 transition-all duration-500 ${
           scrolled || mobileOpen
-            ? "border-white/20 bg-background/90 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/80"
+            ? "border-white/20 bg-background/40 shadow-2xl shadow-primary/10 ring-1 ring-white/10 dark:border-white/10 dark:bg-background/30"
             : theme === "dark"
               ? "border-transparent bg-transparent shadow-none"
               : "border-border/40 bg-background shadow-none"
