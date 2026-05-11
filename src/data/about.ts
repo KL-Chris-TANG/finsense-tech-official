@@ -146,78 +146,78 @@ const content = {
     capabilityPillars: [
       {
         title: "AI 原生智能",
-        description: "將即時洞察、預測分析與智能建議直接融入金融工作流程。",
+        description: "將即時情報、預測性洞察及智能建議直接融入金融工作流程。",
         icon: BrainCircuit,
       },
       {
         title: "監管級自動化",
-        description: "自動化決策、合規輸出生成及可審計流程，有效減輕人手負擔。",
+        description: "自動化決策、生成合規報告及可審核流程，大幅減輕人力負擔。",
         icon: ShieldCheck,
       },
       {
-        title: "為香港及大灣區而設",
-        description: "針對區域金融、可持續發展、保險及智慧城市場景的實際營運需求而打造。",
+        title: "立足香港，深耕大灣區",
+        description: "針對區域內金融、可持續發展、保險及智慧城市行業的營運現實而設計的解決方案。",
         icon: Building2,
       },
     ],
     companyHighlights: [
       { value: "AI-first", label: "產品理念" },
       { value: "2", label: "旗艦平台" },
-      { value: "Hong Kong", label: "總部所在" },
-      { value: "HK / GBA", label: "市場重點" },
+      { value: "Hong Kong", label: "總部地點" },
+      { value: "HK / GBA", label: "市場重心" },
     ],
     products: [
       {
         name: "Crux ESG",
-        strap: "AI 驅動 ESG 匯報平台",
-        description: "透過引導式數據收集、自動分析及合規敘述生成，簡化香港及大灣區中小企的 ESG 匯報流程。",
+        strap: "AI 驅動 ESG 報告平台",
+        description: "利用 AI 技術，透過引導式數據採集、自動化分析及合規論述生成，簡化香港及大灣區中小企業的 ESG 報告流程。",
         href: "#businesses",
       },
       {
         name: "RoadTrust",
         strap: "AI 驅動流動車聯網與保險平台",
-        description: "以車聯網智能、保險洞察及流暢互動機制，為每一段安全里程創造價值。",
+        description: "構建安全道路網絡，以車聯網智能、保險級洞察及流暢的用戶互動，為每一公里的安全駕駛提供獎勵。",
         href: "#businesses",
       },
     ],
     teamTraits: [
-      "具備金融科技、AI、保險、可持續發展與數碼基建的跨界專業能力",
-      "以實用科技解決社會問題、優化金融生態為共同使命",
-      "重視執行與成果，以可行產品、可量化影響及長遠區域價值為核心",
+      "擁有金融科技、AI、保險、可持續發展及數碼基建的跨領域專業知識",
+      "以實用科技解決社會難題並優化金融生態系統為共同使命",
+      "以執行為導向的企業文化，專注於具生命力的產品、可量化的影響力及長遠的區域相關性",
     ],
     sampleLeadership: [
       {
         role: "策略與合作夥伴",
-        summary: "主導市場拓展、機構合作及香港與大灣區的生態網絡擴展。",
+        summary: "領導香港及大灣區的市場開發、機構關係維護及生態系統擴張。",
       },
       {
         role: "AI 與產品創新",
-        summary: "塑造核心平台智能、模型設計及用戶體驗，將複雜轉化為清晰決策。",
+        summary: "塑造核心平台智能、模型設計及用戶體驗，將複雜資訊轉化為明確決策。",
       },
       {
         role: "風險、合規與交付",
-        summary: "以落地能力、治理框架與可擴展營運，確保企業級部署準備就緒。",
+        summary: "透過嚴謹的執行紀律、治理框架及可擴展的營運模式，確保企業級部署準備就緒。",
       },
     ],
     managementTeam: [
       {
         name: "麥宙懿 Co Co C. Y. Mak",
-        role: "聯合創辦人兼董事，商務主管",
+        role: "共同創辦人及董事，商務主管",
         photo: "",
-        bio: "香港執業金融科技律師，現任金融科技公司法律顧問，曾於國際律師事務所為國際金融機構提供法律服務。持有 ESG 碩士學位，並正修讀電腦科學碩士，融合法律、商務與技術視野，主導 Finsense 的市場策略。",
+        bio: "香港執業金融科技律師，現任某金融科技公司法律顧問，曾於國際領先律師事務所為國際金融機構提供顧問服務。持有 ESG 碩士學位並正修讀電腦科學碩士，憑藉法律、商務與技術的跨界視野，驅動 Finsense 的市場策略。",
       },
       {
         name: "劉宇 Ray Y. Liu",
-        role: "聯合創辦人兼董事，技術主管",
+        role: "共同創辦人及董事，技術主管",
         photo: "",
-        bio: "全端開發人員（Python / Java），專注於生成式 AI 與金融建模。曾領導與美國州政府合作的學術級車聯網項目，駕駛者識別準確率達 95%，並全面負責 Finsense AI 原生平台的架構設計。",
+        bio: "全端開發工程師（Python / Java），專精於生成式 AI 及金融建模。曾於美國領導學術驅動的車聯網系統項目，與州政府部門合作並實現 95% 的駕駛者辨識準確率。全面負責 Finsense AI 原生平台的架構設計。",
       },
     ],
     missionVision: {
       vision:
-        "透過引入尖端科技革新社會生態系統，讓世界更安全，並把正面外部效益置於解決方案核心，回應那些長期需要有效科技落地的領域。",
+        "透過引入頂尖科技革新社會生態系統，將正面外部性置於解決方案的核心，解決那些渴求有效技術轉型領域的難題，使世界變得更安全。",
       mission:
-        "運用科技、數據與創新力量，提供無縫、安全、共融並有利社會的解決方案，推動全球轉型，同時協助企業與個人在智慧城市及日益互聯的世界中蓬勃發展。",
+        "利用科技、數據與創新的力量，提供無縫、安全且具包容性的解決方案，在推動全球轉型的同時，賦能企業與個人在智慧城市及日益數碼化的世界中蓬勃發展。",
     },
     strategicPartners: [
       {
@@ -232,13 +232,13 @@ const content = {
         name: "Cyberport",
         logo: cyberportLogo,
         description:
-          "Cyberport University Partnership Programme 2025 Awardee——Crux ESG 因專為中小企而設的 AI 區塊鏈 ESG 匯報平台獲選。",
+          "數碼港大學合作夥伴計劃 2025 得獎者 —— Crux ESG 憑藉其專為中小企打造的 AI 區塊鏈 ESG 報告平台脫穎而出。",
       },
       {
         name: "HKSTP",
         logo: hkstpLogo,
         description:
-          "HKSTP Ideation Programme 2025 Awardee——RoadTrust 因其 AI 流動車聯網保險科技平台獲得肯定。",
+          "香港科技園公司 Ideation 計劃 2025 得獎者 —— RoadTrust 其 AI 驅動流動車聯網保險科技平台獲得業界認可。",
       },
     ],
   },
@@ -246,78 +246,78 @@ const content = {
     capabilityPillars: [
       {
         title: "AI 原生智能",
-        description: "将实时洞察、预测分析与智能建议直接融入金融工作流程。",
+        description: "将实时情报、预测性洞察和智能建议直接融入金融工作流程。",
         icon: BrainCircuit,
       },
       {
         title: "监管级自动化",
-        description: "自动化决策、合规输出生成及可审计流程，有效减轻人手负担。",
+        description: "自动化决策、生成合规报告及可审计流程，大幅减轻人力负担。",
         icon: ShieldCheck,
       },
       {
-        title: "为香港及大湾区而设",
-        description: "针对区域金融、可持续发展、保险及智慧城市场景的实际运营需求而打造。",
+        title: "立足香港，深耕大湾区",
+        description: "针对区域内金融、可持续发展、保险及智慧城市行业的运营实际而设计的解决方案。",
         icon: Building2,
       },
     ],
     companyHighlights: [
       { value: "AI-first", label: "产品理念" },
       { value: "2", label: "旗舰平台" },
-      { value: "Hong Kong", label: "总部所在" },
-      { value: "HK / GBA", label: "市场重点" },
+      { value: "Hong Kong", label: "总部地点" },
+      { value: "HK / GBA", label: "市场重心" },
     ],
     products: [
       {
         name: "Crux ESG",
         strap: "AI 驱动 ESG 报告平台",
-        description: "通过引导式数据收集、自动分析及合规叙述生成，简化香港及大湾区中小企业的 ESG 报告流程。",
+        description: "利用 AI 技术，通过引导式数据采集、自动化分析和合规叙述生成，简化香港及大湾区中小企业的 ESG 报告流程。",
         href: "#businesses",
       },
       {
         name: "RoadTrust",
         strap: "AI 驱动移动车联网与保险平台",
-        description: "以车联网智能、保险洞察及流畅互动机制，为每一段安全里程创造价值。",
+        description: "构建安全道路网络，以车联网智能、保险级洞察和流畅的用户交互，为每一公里的安全驾驶提供奖励。",
         href: "#businesses",
       },
     ],
     teamTraits: [
-      "具备金融科技、AI、保险、可持续发展与数字基建的跨界专业能力",
-      "以实用科技解决社会问题、优化金融生态为共同使命",
-      "重视执行与成果，以可行产品、可量化影响及长期区域价值为核心",
+      "拥有金融科技、AI、保险、可持续发展及数字基建的跨领域专业知识",
+      "以实用科技解决社会难题并优化金融生态系统为共同使命",
+      "以执行为导向的企业文化，专注于具生命力的产品、可量化的影响力及长期的区域相关性",
     ],
     sampleLeadership: [
       {
         role: "战略与合作伙伴",
-        summary: "主导市场拓展、机构合作及香港与大湾区的生态网络扩展。",
+        summary: "领导香港及大湾区的市场开发、机构关系维护及生态系统扩张。",
       },
       {
         role: "AI 与产品创新",
-        summary: "塑造核心平台智能、模型设计及用户体验，将复杂转化为清晰决策。",
+        summary: "塑造核心平台智能、模型设计和用户体验，将复杂信息转化为明确决策。",
       },
       {
         role: "风险、合规与交付",
-        summary: "以落地能力、治理框架与可扩展运营，确保企业级部署准备就绪。",
+        summary: "通过严谨的执行纪律、治理框架和可扩展的运营模式，确保企业级部署准备就绪。",
       },
     ],
     managementTeam: [
       {
         name: "麦宙懿 Co Co C. Y. Mak",
-        role: "联合创办人兼董事，商务主管",
+        role: "共同创始人及董事，商务主管",
         photo: "",
-        bio: "香港执业金融科技律师，现任金融科技公司法律顾问，曾于国际律师事务所为国际金融机构提供法律服务。持有 ESG 硕士学位，并正修读计算机科学硕士，融合法律、商务与技术视野，主导 Finsense 的市场策略。",
+        bio: "香港执业金融科技律师，现任某金融科技公司法律顾问，曾于国际领先律师事务所为国际金融机构提供顾问服务。持有 ESG 硕士学位并正修读计算机科学硕士，凭借法律、商务与技术的跨界视野，驱动 Finsense 的市场战略。",
       },
       {
         name: "刘宇 Ray Y. Liu",
-        role: "联合创办人兼董事，技术主管",
+        role: "共同创始人及董事，技术主管",
         photo: "",
-        bio: "全栈开发人员（Python / Java），专注于生成式 AI 与金融建模。曾领导与美国州政府合作的学术级车联网项目，驾驶者识别准确率达 95%，并全面负责 Finsense AI 原生平台的架构设计。",
+        bio: "全栈开发工程师（Python / Java），专精于生成式 AI 及金融建模。曾在美国领导学术驱动的车联网系统项目，与州政府部门合作并实现 95% 的驾驶者辨识准确率。全面负责 Finsense AI 原生平台的架构设计。",
       },
     ],
     missionVision: {
       vision:
-        "通过引入尖端科技革新社会生态系统，让世界更安全，并把正面外部效益置于解决方案核心，回应那些长期需要有效科技落地的领域。",
+        "通过引入顶尖科技革新社会生态系统，将正面外部性置于解决方案的核心，解决那些渴望有效技术转型领域的难题，使世界变得更安全。",
       mission:
-        "运用科技、数据与创新力量，提供无缝、安全、共融并有利社会的解决方案，推动全球转型，同时协助企业与个人在智慧城市及日益互联的世界中蓬勃发展。",
+        "利用科技、数据与创新的力量，提供无缝、安全且具包容性的解决方案，在推动全球转型的同时，赋能企业与个人在智慧城市及日益数字化世界中蓬勃发展。",
     },
     strategicPartners: [
       {
@@ -332,13 +332,13 @@ const content = {
         name: "Cyberport",
         logo: cyberportLogo,
         description:
-          "Cyberport University Partnership Programme 2025 Awardee——Crux ESG 因专为中小企业而设的 AI 区块链 ESG 报告平台获选。",
+          "数码港大学合作伙伴计划 2025 得奖者 —— Crux ESG 凭借其专为中小企打造的 AI 区块链 ESG 报告平台脱颖而出。",
       },
       {
         name: "HKSTP",
         logo: hkstpLogo,
         description:
-          "HKSTP Ideation Programme 2025 Awardee——RoadTrust 因其 AI 移动车联网保险科技平台获得肯定。",
+          "香港科技园公司 Ideation 计划 2025 得奖者 —— RoadTrust 其 AI 驱动移动车联网保险科技平台获得业界认可。",
       },
     ],
   },
