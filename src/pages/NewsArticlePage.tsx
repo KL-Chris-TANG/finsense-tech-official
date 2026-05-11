@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, ExternalLink, Linkedin, User, Youtube } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -36,6 +36,22 @@ const NewsArticlePage = () => {
             </Badge>
 
             <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">{article.title}</h1>
+          </Reveal>
+
+          {article.heroImage && (
+            <Reveal delay={50}>
+              <div className="mb-8 overflow-hidden rounded-2xl border border-border">
+                <img
+                  src={article.heroImage}
+                  alt={article.title}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+          )}
+
+          <Reveal delay={75}>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b border-border pb-6 mb-10">
               <span className="inline-flex items-center gap-2">
@@ -69,6 +85,32 @@ const NewsArticlePage = () => {
                 </p>
               ))}
             </div>
+
+            {(article.linkedInUrl || article.youtubeUrl || article.externalUrl) && (
+              <div className="mt-10 flex flex-wrap gap-3">
+                {article.linkedInUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.linkedInUrl} target="_blank" rel="noopener noreferrer">
+                      <Linkedin size={14} /> View on LinkedIn
+                    </a>
+                  </Button>
+                )}
+                {article.youtubeUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                      <Youtube size={14} /> Watch on YouTube
+                    </a>
+                  </Button>
+                )}
+                {article.externalUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.externalUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={14} /> Read more
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
           </Reveal>
 
           <Reveal delay={200}>
