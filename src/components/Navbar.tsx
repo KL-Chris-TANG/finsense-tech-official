@@ -88,12 +88,18 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-8">
             <div
               className="relative"
-              onMouseEnter={() => setSolutionsOpen(true)}
+              onMouseEnter={() => {
+                setSolutionsOpen(true);
+                setLanguageOpen(false);
+              }}
               onMouseLeave={() => setSolutionsOpen(false)}
             >
               <button
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide uppercase"
-                onClick={() => setSolutionsOpen((open) => !open)}
+                onClick={() => {
+                  setSolutionsOpen((open) => !open);
+                  setLanguageOpen(false);
+                }}
                 aria-expanded={solutionsOpen}
               >
                 {copy.solutions}
@@ -153,12 +159,18 @@ const Navbar = () => {
 
             <div
               className="relative"
-              onMouseEnter={() => setLanguageOpen(true)}
+              onMouseEnter={() => {
+                setLanguageOpen(true);
+                setSolutionsOpen(false);
+              }}
               onMouseLeave={() => setLanguageOpen(false)}
             >
               <button
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-transparent text-muted-foreground transition-colors duration-300 hover:border-border/60 hover:text-foreground"
-                onClick={() => setLanguageOpen((open) => !open)}
+                onClick={() => {
+                  setLanguageOpen((open) => !open);
+                  setSolutionsOpen(false);
+                }}
                 aria-expanded={languageOpen}
                 aria-label={copy.language}
                 title={copy.language}

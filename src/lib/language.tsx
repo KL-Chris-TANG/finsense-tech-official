@@ -18,7 +18,7 @@ export const languageOptions: { value: Language; shortLabel: string; label: Reco
     value: "zh-Hant",
     shortLabel: "繁",
     label: {
-      en: "Traditional Chinese",
+      en: "繁體中文",
       "zh-Hant": "繁體中文",
       "zh-Hans": "繁體中文",
     },
@@ -27,8 +27,8 @@ export const languageOptions: { value: Language; shortLabel: string; label: Reco
     value: "zh-Hans",
     shortLabel: "简",
     label: {
-      en: "Simplified Chinese",
-      "zh-Hant": "簡體中文",
+      en: "简体中文",
+      "zh-Hant": "简体中文",
       "zh-Hans": "简体中文",
     },
   },
