@@ -85,6 +85,32 @@ const NewsArticlePage = () => {
                 </p>
               ))}
             </div>
+
+            {(article.linkedInUrl || article.youtubeUrl || article.externalUrl) && (
+              <div className="mt-10 flex flex-wrap gap-3">
+                {article.linkedInUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.linkedInUrl} target="_blank" rel="noopener noreferrer">
+                      <Linkedin size={14} /> View on LinkedIn
+                    </a>
+                  </Button>
+                )}
+                {article.youtubeUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                      <Youtube size={14} /> Watch on YouTube
+                    </a>
+                  </Button>
+                )}
+                {article.externalUrl && (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={article.externalUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={14} /> Read more
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
           </Reveal>
 
           <Reveal delay={200}>
