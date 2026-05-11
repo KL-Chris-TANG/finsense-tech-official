@@ -1,4 +1,4 @@
-import { getNews, newsCategories, type NewsArticle, type NewsCategory } from "@/data/news";
+import { getStaticNews, newsCategories, type NewsArticle, type NewsCategory } from "@/data/news";
 import type { Language } from "@/lib/language";
 
 // Local-only news store backed by localStorage. Acts as the source of truth
@@ -62,9 +62,9 @@ const buildTranslation = (a: NewsArticle): ArticleTranslation => ({
 });
 
 const seed = (): AdminNewsArticle[] => {
-  const en = getNews("en");
-  const hant = new Map(getNews("zh-Hant").map((a) => [a.slug, a]));
-  const hans = new Map(getNews("zh-Hans").map((a) => [a.slug, a]));
+  const en = getStaticNews("en");
+  const hant = new Map(getStaticNews("zh-Hant").map((a) => [a.slug, a]));
+  const hans = new Map(getStaticNews("zh-Hans").map((a) => [a.slug, a]));
   return en.map((a) => ({
     slug: a.slug,
     category: a.category,
